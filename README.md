@@ -60,6 +60,8 @@ Testdata för varje jobb finns att ladda hem här. Det går också bra att anvä
 Skapa egen Trello (eller likande) för egen projektplanering
 Skapa wireframe/prototyp i Figma
 Använda dig av komponenter att bygga upp första sidan, och använd props för dataflödet.
+Använda dig av conditional rendering, ex visa information om dataobjektet är tomt
+
 
 ### Veckans teoretiska frågor
 
