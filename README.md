@@ -44,12 +44,8 @@ https://chasacademy.instructure.com/courses/289/assignments/1594
 ### Om Jobchaser
 
 Jobchaser är ett verktyg för YH-studenter att hitta LIA eller jobb på ett effektivt sätt. En första enkel skiss visas nedan.
-
 Endast en userstory finns just nu tillgodo: "Som användare vill jag kunna se en lista av jobb".
-
-Testdata för varje jobb finns att ladda hem här. Det går också bra att använda egen data.
-
-(i skissen nedan finns även skiss för taggar att filtrera - kommande uppgift!)
+Testdata för varje jobb finns att ladda hem här [text](https://github.com/chasacademy-sandra-larsson/react-jobchaser) to an external site.. Det går också bra att använda egen data, eller modifiera. Använd de dataattribut som passar ditt projekt!
 
 ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png 'Logo Title Text 1')
 
