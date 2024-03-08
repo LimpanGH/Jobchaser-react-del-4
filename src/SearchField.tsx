@@ -1,12 +1,14 @@
 export function SearchField() {
   return (
     <div className='search-card'>
-      <div className='btn-magifyingglass'>
+      <button type='button' className='btn-magifyingglass'>
         <svg
           className='icon-magifyingglass'
           xmlns='http://www.w3.org/2000/svg'
-          width='70'
-          height='67'
+          // width='70'
+          // height='67'
+          width='40'
+          height='40'
           viewBox='0 0 70 67'
           fill='none'
         >
@@ -15,7 +17,7 @@ export function SearchField() {
             fill='black'
           />
         </svg>
-      </div>
+      </button>
       <div className='tag-btn-container'>
         <div className='tag-btn'>tag1</div>
         <div className='tag-btn'>tag1</div>
