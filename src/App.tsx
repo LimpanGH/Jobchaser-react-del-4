@@ -1,18 +1,15 @@
-import React from 'react';
-import mockData from './mockData.json';
+import { Jobs } from './Jobs';
+import { SearchField } from './SearchField';
+import { NavBar } from './NavBar';
 
-console.log(mockData);
-
-function MyComponent() {
-  const renderedJobs = mockData.jobs.map((param) => (
-    <div key={param.id}>
-      <h2>{param.company}</h2>
-      <p>Position: {param.position}</p>
-      <p>Location: {param.location}</p>
-    </div>
-  ));
-
-  return <div> {renderedJobs}</div>;
+export function App() {
+  return (
+    <>
+      <div className='container-wrapper'>
+        <NavBar />
+        <SearchField />
+        <Jobs />
+      </div>
+    </>
+  );
 }
-
-export default MyComponent;
