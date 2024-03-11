@@ -85,9 +85,8 @@
 
 import { useEffect, useState } from 'react';
 import { getData } from './GetData';
-import { SearchField } from './SearchField';
+// import { SearchField } from './SearchField';
 
-console.log(SearchField.value);
 
 const urlGeographicalArea: string =
   'https://jobsearch.api.jobtechdev.se/search?q=Flen';
@@ -126,9 +125,9 @@ export function Jobs(): JSX.Element {
   }, []);
 
 
-  const handleSearch =(searchValue: string): void => {
-    console.log('Search value', searchValue);
-  }
+  // const handleSearch =(searchValue: string): void => {
+  //   console.log('Search value', searchValue);
+  // }
 
   
   // Render jobs
