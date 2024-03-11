@@ -4,12 +4,9 @@ export async function getData(url: string): Promise<any> {
   try {
     const response = await fetch(url);
     const data = await response.json();
-    console.log(data);
+    // console.log(data.hits[0].id);
     // console.table(data);
-    // console.log(data.hits);
-    console.log(data.hits[0].employer.name);
-    // console.log(data.hits[0].application_details.reference);
-    
+    console.log(data.hits);
 
     return data;
   } catch (error) {

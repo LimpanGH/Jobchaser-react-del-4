@@ -74,9 +74,11 @@ body {
   gap: 2px;
   border: 1px solid;
   border-radius: 0.2rem;
-  height: 5rem;
+  /* height: 5rem; */
   width: 100%;
   margin-bottom: 0.7rem;
+  padding: 0.6rem;
+  
 }
 
 .logo {
