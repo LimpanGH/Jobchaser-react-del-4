@@ -98,7 +98,6 @@ export function Jobs() {
       try {
         const data = await getData(urlGeographicalArea);
         setJobs(data.hits); // Antag att hits är den del av data som innehåller jobben
-        console.log(data.hits[0].application_details.reference);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -107,13 +106,14 @@ export function Jobs() {
     fetchData();
   }, []); // Använd en tom array för att endast köra useEffect en gång när komponenten renderas för första gången
 
+  
   const renderedJobs = jobs.map((param) => (
     <div key={param.id} className='job-card'>
       <div className='logo'>
         <img className='logo-image' src={param.logo} alt='' />
       </div>
       <div className='company-info'>
-        <h2>{param.company}</h2>
+        <h2>{param.hits[0].employer.name}</h2>
         <p>Position: {param.position}</p>
         <p>Location: {param.location}</p>
       </div>
@@ -124,10 +124,12 @@ export function Jobs() {
       </div>
     </div>
   ));
-
+  
   return (
     <>
       <div className='card-wrapper'> {renderedJobs}</div>
     </>
   );
 }
+
+// data.hits[0].employer.name
