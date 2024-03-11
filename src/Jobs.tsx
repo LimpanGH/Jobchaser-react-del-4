@@ -136,7 +136,7 @@ export function Jobs(): JSX.Element {
       <div className='logo'>
         <img
           className='logo-image'
-          src={job.logo_url ? job.logo_url : './images/JobChaser-SVG.svg'}
+          src={job.logo_url ? job.logo_url : './src/images/JobChaser-SVG.svg '}
           alt=''
         />
       </div>
