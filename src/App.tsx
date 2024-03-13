@@ -1,6 +1,6 @@
-import { Jobs } from './Jobs';
-import { SearchField } from './SearchField';
-import { NavBar } from './NavBar';
+import { Jobs } from './pages/Home/Jobs';
+import { SearchField } from './pages/Home/SearchField';
+import { NavBar } from './components/NavBar';
 
 // import { getData } from './GetData';
 

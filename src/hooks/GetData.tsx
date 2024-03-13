@@ -14,3 +14,4 @@ export async function getData(url: string): Promise<any> {
     throw error;
   }
 }
+ 

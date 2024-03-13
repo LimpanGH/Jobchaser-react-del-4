@@ -84,15 +84,14 @@
 // getData(urlGeographicalArea);
 
 import { useEffect, useState } from 'react';
-import { getData } from './GetData';
+import { getData } from '../../hooks/GetData';
 // import { SearchField } from './SearchField';
-
 
 const urlGeographicalArea: string =
   'https://jobsearch.api.jobtechdev.se/search?q=Flen';
 
 // Interface ---------------------------
-  interface Job {
+interface Job {
   id: string;
   employer: {
     name: string;
@@ -104,12 +103,10 @@ const urlGeographicalArea: string =
   logo_url?: string; // Optional property
 }
 
-
 // Jobs -----------------------------------
 export function Jobs(): JSX.Element {
   const [jobs, setJobs] = useState<Job[]>([]);
 
-  
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
@@ -124,12 +121,10 @@ export function Jobs(): JSX.Element {
     fetchData();
   }, []);
 
-
   // const handleSearch =(searchValue: string): void => {
   //   console.log('Search value', searchValue);
   // }
 
-  
   // Render jobs
   const renderedJobs = jobs.map((job: Job) => (
     <div key={job.id} className='job-card'>
@@ -145,7 +140,6 @@ export function Jobs(): JSX.Element {
         <p>Position: {job.headline}</p>
         <p>Location: {job.workplace_address.city}</p>
         <p>ID: {job.id}</p>
-
       </div>
       <div className='tag-btn-container'>
         <div className='tag-btn'>tag1</div>
@@ -163,7 +157,6 @@ export function Jobs(): JSX.Element {
       < SearchField onSearch={handleSearch} />
       <div className="card-wrapper">{renderedJobs}</div>
     </div> */}
-      
     </>
   );
 }
