@@ -39,7 +39,7 @@ export function App() {
             path='/jobs'
             element={
               <>
-                <SearchField />
+                {/* <SearchField /> */}
                 <Jobs />
               </>
             }

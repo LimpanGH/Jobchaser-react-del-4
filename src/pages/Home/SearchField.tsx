@@ -1,12 +1,18 @@
+import React from 'react';
 import { useId } from 'react';
 import { useState } from 'react';
 
-export function SearchField() {
+type Props = {
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  value: string;
+};
+
+export function SearchField({ onChange, value }: Props) {
   const ageInputId = useId();
-  const [searchValue, setSearchValue] = useState('');
+  // const [searchValue, setSearchValue] = useState('');
 
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchValue(event.target.value);
+    onChange(event.target.value);
   };
   const handleSearch = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -26,8 +32,8 @@ export function SearchField() {
           type='text'
           placeholder='Sökelisök'
           // defaultValue='Sökelisök'
-          value={searchValue}
-          onChange={handleInputChange}
+          value={value}
+          onChange={onChange}
         />
         <SearchBtn />
       </form>
@@ -43,9 +49,7 @@ export function SearchField() {
 function SearchBtn() {
   return (
     <div>
-      <button type='submit'>
-        🔎 Sök
-      </button>
+      <button type='submit'>🔎 Sök</button>
     </div>
   );
 }

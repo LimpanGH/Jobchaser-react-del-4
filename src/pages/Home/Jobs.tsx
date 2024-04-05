@@ -85,10 +85,10 @@
 
 import { useEffect, useState } from 'react';
 import { getData } from '../../hooks/GetData';
+import { SearchField } from './SearchField';
 // import { SearchField } from './SearchField';
 
-const urlGeographicalArea: string =
-  'https://jobsearch.api.jobtechdev.se/search?q=Flen';
+const urlGeographicalArea: string = 'https://jobsearch.api.jobtechdev.se/search?q=Flen';
 
 // Interface ---------------------------
 interface Job {
@@ -106,6 +106,7 @@ interface Job {
 // Jobs -----------------------------------
 export function Jobs(): JSX.Element {
   const [jobs, setJobs] = useState<Job[]>([]);
+  const [searchFilter, setSearchFilter] = useState('');
 
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
@@ -121,19 +122,25 @@ export function Jobs(): JSX.Element {
     fetchData();
   }, []);
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchFilter(e.target.value);
+  };
+
+  const filteredJobs = jobs.filter((job) => {
+    return JSON.stringify(job).toLowerCase().match(searchFilter.toLowerCase()); //|| job.workplace_address.city.includes(searchFilter)
+  });
+
   // const handleSearch =(searchValue: string): void => {
   //   console.log('Search value', searchValue);
   // }
 
   // Render jobs
-  const renderedJobs = jobs.map((job: Job) => (
+  const renderedJobs = filteredJobs.map((job: Job) => (
     <div key={job.id} className='job-card'>
       <div className='logo'>
         <img
           className='logo-image'
-          src={
-            job.logo_url ? job.logo_url : './public/images/JobChaser-SVG.svg '
-          }
+          src={job.logo_url ? job.logo_url : './public/images/JobChaser-SVG.svg '}
           alt=''
         />
       </div>
@@ -153,6 +160,8 @@ export function Jobs(): JSX.Element {
 
   return (
     <>
+      <SearchField onChange={handleChange} value={searchFilter} />
+      <div>{filteredJobs.length}</div>
       <div className='card-wrapper'> {renderedJobs}</div>
 
       {/* <div>
