@@ -34,6 +34,7 @@ export function SearchField({ onChange, value }: Props) {
           // defaultValue='Sökelisök'
           value={value}
           onChange={onChange}
+          className='ml-5 border border-black'
         />
         <SearchBtn />
       </form>
@@ -49,12 +50,12 @@ export function SearchField({ onChange, value }: Props) {
 function SearchBtn() {
   return (
     <div>
-      <button type='submit'>🔎 Sök</button>
+      <button type='submit' className='ml-5'>🔎</button>
     </div>
   );
 }
 
-// todo ---------------------------------------------
+//* ---------------------------------------------
 {
   /* <button type='button' className='btn-magifyingglass'>
           <svg

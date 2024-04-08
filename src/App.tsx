@@ -16,6 +16,7 @@ import HomePage from './pages/Home/HomePage';
 // import SignInForm from './pages/SignInPage/SignInPage';
 // import SignUpForm from './pages/SignUpPage/SignUpPage';
 import SignUpPage from './pages/SignUpPage/SignUpPage';
+import SignInPage from './pages/SignInPage/SignInPage';
 import Dashboard from './pages/Dashboard/Dashboard';
 
 // import { getData } from './GetData';
@@ -32,7 +33,7 @@ export function App() {
           </Route>
           <Route path='/' element={<HomePage />} />
           <Route path='/signup' element={<SignUpPage />} />
-          {/* <Route path='/signin' element={<SignInPage />} /> */}
+          <Route path='/signin' element={<SignInPage />} />
           {/* <Route path='/dashboard' element={<ProtectedRoute />}> */}
           <Route path='/dashboard' element={<Dashboard />} />
           <Route

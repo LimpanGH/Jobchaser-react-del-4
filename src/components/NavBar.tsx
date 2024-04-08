@@ -8,6 +8,15 @@ export function NavBar() {
       <Link className='text-3xl ' to='/jobs'>
         Jobs
       </Link>
+      <Link className='text-3xl ' to='/dashboard'>
+        Dashboard
+      </Link>
+      <Link className='text-3xl ' to='/signup'>
+        Signup
+      </Link>
+      <Link className='text-3xl ' to='/signin'>
+        Signin
+      </Link>
       {/* <Link to='/'>Home</Link>
       <Link to='/'>Home</Link>
       <Link to='/'>Home</Link>
