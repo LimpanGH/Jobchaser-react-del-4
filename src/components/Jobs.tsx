@@ -61,6 +61,7 @@ export function Jobs(): JSX.Element {
   //! Render jobs (make a separate component?)
   const renderedJobs = filteredJobs.map((job: Job) => (
     <div key={job.id} className='job-card'>
+      
       <div className='logo'>
         <img
           className='logo-image'
@@ -90,3 +91,4 @@ export function Jobs(): JSX.Element {
     </>
   );
 }
+
