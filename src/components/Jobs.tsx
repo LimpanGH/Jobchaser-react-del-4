@@ -7,13 +7,12 @@
 // const urlGeographicalArea = 'https://jobsearch.api.jobtechdev.se/search?q=Flen';
 // const cleanEndpoint: string = 'https://jobsearch.api.jobtechdev.se/search?';
 
-// getData(urlGeographicalArea);
-
+// Imports
 import { useEffect, useState } from 'react';
-import { getData } from '../../hooks/GetData';
-import { SearchField } from './SearchField';
-// import { SearchField } from './SearchField';
+import { getData } from './GetData';
+import { SearchField } from '../pages/Home/SearchField';
 
+// Endpoint and mumber of posts
 const activeEndpoint = 'https://jobsearch.api.jobtechdev.se/search?';
 const limit = 40; // Specify the number of results per page
 const offset = 0; // Specify the starting point of the results (0-indexed)
@@ -29,7 +28,7 @@ interface Job {
   workplace_address: {
     city: string;
   };
-  logo_url?: string; // Optional property
+  logo_url?: string; // Optional
 }
 
 // Jobs -----------------------------------
@@ -59,7 +58,7 @@ export function Jobs(): JSX.Element {
     return JSON.stringify(job).toLowerCase().match(searchFilter.toLowerCase()); //|| job.workplace_address.city.includes(searchFilter)
   });
 
-  // Render jobs
+  //! Render jobs (make a separate component?)
   const renderedJobs = filteredJobs.map((job: Job) => (
     <div key={job.id} className='job-card'>
       <div className='logo'>
@@ -91,79 +90,3 @@ export function Jobs(): JSX.Element {
     </>
   );
 }
-
-// --------------------------------------------------------------------------------------------------
-
-//* mockdata  component------------------------------
-// import { useEffect, useState } from 'react';
-// import mockData from './mockData.json';
-
-// console.log(mockData);
-
-// export function Jobs() {
-//   const renderedJobs = mockData.jobs.map((param) => (
-//     <div key={param.id} className='job-card'>
-//       <div className='logo'>
-//         <img className='logo-image' src={param.logo} alt='' />
-//       </div>
-//       <div className='company-info'>
-//         <h2>{param.company}</h2>
-//         <p>Position: {param.position}</p>
-//         <p>Location: {param.location}</p>
-//       </div>
-//       <div className='tag-btn-container'>
-//         <div className='tag-btn'>tag1</div>
-//         <div className='tag-btn'>tag1</div>
-//         <div className='tag-btn'>tag1</div>
-//       </div>
-//     </div>
-//   ));
-
-//   return (
-//     <>
-//       <div className='card-wrapper'> {renderedJobs}</div>
-//     </>
-//   );
-// }
-// --------------------------------------------------------------
-
-//* mockdata reusable component---------------------------------------------------------------
-
-// const Job = (param) => {
-//   return (
-//     <div key={param.id} className='job-card'>
-//       <div className='logo'>
-//         <img className='logo-image' src={param.logo} alt='' />
-//       </div>
-//       <div className='company-info'>
-//         <h2>{param.company}</h2>
-//         <p>Position: {param.position}</p>
-//         <p>Location: {param.location}</p>
-//       </div>
-//       <div className='tag-btn-container'>
-//         <div className='tag-btn'>tag1</div>
-//         <div className='tag-btn'>tag1</div>
-//         <div className='tag-btn'>tag1</div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// function Jobs2() {
-//   // fetch data from API
-//   const [jobs, setJobs] = useState([]);
-//   const [isLoading, setIsLoading] = useState(true);
-
-//   if (!isLoading && !jobs.length) {
-//     return 'loading...';
-//   }
-
-//   return (
-//     <div className='card-wrapper'>
-//       {mockData.jobs.map((param) => (
-//         <Job data={param} key={param.id} />
-//       ))}
-//     </div>
-//   );
-// }
-// --------------------------------------------------------------

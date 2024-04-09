@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState }from 'react';
 import { useId } from 'react';
-import { useState } from 'react';
+
 
 type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;

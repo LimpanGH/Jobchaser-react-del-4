@@ -20,6 +20,13 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src", "src/firebase-config.tsx"],
+  "include": [
+    "src",
+    "src/Firebase/firebase-config.tsx",
+    "src/Firebase/Login",
+    "src/Firebase/SignUpPage",
+    "src/Firebase/auth_funktioner_doc.tsx",
+    "src/Firebase/SignUpForm.tsx"
+  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

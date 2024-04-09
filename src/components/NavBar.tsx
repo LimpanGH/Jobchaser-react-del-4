@@ -8,19 +8,12 @@ export function NavBar() {
       <Link className='text-3xl ' to='/jobs'>
         Jobs
       </Link>
-      <Link className='text-3xl ' to='/dashboard'>
-        Dashboard
-      </Link>
-      <Link className='text-3xl ' to='/signup'>
+      <Link className='text-xl text-blue-600 ' to='/signup'>
         Signup
       </Link>
-      <Link className='text-3xl ' to='/signin'>
+      <Link className='text-xl text-blue-600' to='/signin'>
         Signin
       </Link>
-      {/* <Link to='/'>Home</Link>
-      <Link to='/'>Home</Link>
-      <Link to='/'>Home</Link>
-      <Link to='/'>Home</Link> */}
     </div>
   );
 }
