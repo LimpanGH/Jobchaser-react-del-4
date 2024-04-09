@@ -11,6 +11,7 @@
 import { useEffect, useState } from 'react';
 import { getData } from './GetData';
 import { SearchField } from '../pages/Home/SearchField';
+import { RenderedJobs } from './RenderedJobs';
 
 // Endpoint and mumber of posts
 const activeEndpoint = 'https://jobsearch.api.jobtechdev.se/search?';
@@ -58,37 +59,11 @@ export function Jobs(): JSX.Element {
     return JSON.stringify(job).toLowerCase().match(searchFilter.toLowerCase()); //|| job.workplace_address.city.includes(searchFilter)
   });
 
-  //! Render jobs (make a separate component?)
-  const renderedJobs = filteredJobs.map((job: Job) => (
-    <div key={job.id} className='job-card'>
-      
-      <div className='logo'>
-        <img
-          className='logo-image'
-          src={job.logo_url ? job.logo_url : './public/images/JobChaser-SVG.svg '}
-          alt=''
-        />
-      </div>
-      <div className='company-info'>
-        <h2>{job.employer.name}</h2>
-        <p>Position: {job.headline}</p>
-        <p>Location: {job.workplace_address.city}</p>
-        <p>ID: {job.id}</p>
-      </div>
-      <div className='tag-btn-container'>
-        <div className='tag-btn'>tag1</div>
-        <div className='tag-btn'>tag2</div>
-        <div className='tag-btn'>tag3</div>
-      </div>
-    </div>
-  ));
-
   return (
     <>
       <SearchField onChange={handleChange} value={searchFilter} />
       <div>{filteredJobs.length}</div>
-      <div className='card-wrapper'> {renderedJobs}</div>
+      <RenderedJobs filteredJobs={filteredJobs} />
     </>
   );
 }
-

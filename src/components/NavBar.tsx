@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import {Modal} from './Modal';
+import {Modal} from './ModalAccount';
 
 export function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
