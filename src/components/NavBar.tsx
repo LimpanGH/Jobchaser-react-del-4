@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
-import {Modal} from './ModalAccount';
+import { Modal } from './ModalAccount';
 
 export function NavBar() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -25,7 +25,7 @@ export function NavBar() {
         Signup
       </Link> */}
 
-      <div className='flex items-center text-xl text-blue-600' >
+      <div className='flex items-center text-xl text-blue-600'>
         <img
           src='./src/assets/SVG/Hitta IT-jobb! Utvecklare, IT-support, säkerhet, projektledare mm-7.svg'
           style={{ width: '24px', height: '24px', cursor: 'pointer' }}
