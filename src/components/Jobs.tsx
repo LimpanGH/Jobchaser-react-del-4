@@ -12,6 +12,7 @@ import { useEffect, useState } from 'react';
 import { getData } from './GetData';
 import { SearchField } from '../pages/Home/SearchField';
 import { RenderedJobs } from './RenderedJobs';
+import { Loader } from './Loader';
 
 // Endpoint and mumber of posts
 const activeEndpoint = 'https://jobsearch.api.jobtechdev.se/search?';
@@ -36,13 +37,18 @@ interface Job {
 export function Jobs(): JSX.Element {
   const [jobs, setJobs] = useState<Job[]>([]);
   const [searchFilter, setSearchFilter] = useState('');
+  const [isLoading, setIsloading] = useState(true);
 
+  // Runs AFTER the first render
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
+        setIsloading(true);
         const data: any = await getData(url);
+        await new Promise((r) => setTimeout(r, 2000)); // just to see the loading spinner
         setJobs(data.hits as Job[]);
         console.log(data.hits[0].id);
+        setIsloading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -50,6 +56,10 @@ export function Jobs(): JSX.Element {
 
     fetchData();
   }, []);
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchFilter(e.target.value);
