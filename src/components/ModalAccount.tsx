@@ -1,26 +1,72 @@
-import { MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 interface ModalProps {
   onClose: MouseEventHandler<HTMLButtonElement>;
 }
 
 export const Modal: React.FC<ModalProps> = ({ onClose }) => {
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  const goToSignInPage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    onClose(event); // Close the modal by passing the event
+    navigate('/signin'); // Navigate to '/signin' route
+  };
+  
+  const goToSignUpPage = (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    onClose(event); // Close the modal by passing the event
+    navigate('/signup'); // Navigate to '/signin' route
+  };
+
   return (
     <div className='fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50'>
       <div className='p-8 bg-white rounded-lg'>
-        <div className='mb-4 text-center'>
-          <div className='mb-2 text-xl font-bold'>Sign In</div>
-          <button className='text-blue-500' onClick={onClose}>
-            Close
+        <div className='flex justify-end'>
+          {/* Close button (X) */}
+          <button className='text-gray-500' onClick={onClose}>
+            X
           </button>
         </div>
         <div className='mb-4 text-center'>
-          <div className='mb-2 text-xl font-bold'>Sign Up</div>
-          <button className='text-blue-500' onClick={onClose}>
-            Close
+          {/* <div className='mb-2 text-xl font-bold'>Sign In</div> */}
+          <button className='text-blue-500' onClick={goToSignInPage}>
+            Sign In
+          </button>
+        </div>
+        <div className='mb-4 text-center'>
+          {/* <div className='mb-2 text-xl font-bold'>Sign Up</div> */}
+          <button className='text-blue-500' onClick={goToSignUpPage}>
+            Sign Up
           </button>
         </div>
       </div>
     </div>
   );
 };
+
+// import { MouseEventHandler } from 'react';
+
+// interface ModalProps {
+//   onClose: MouseEventHandler<HTMLButtonElement>;
+// }
+
+// export const Modal: React.FC<ModalProps> = ({ onClose }) => {
+//   return (
+//     <div className='fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50'>
+//       <div className='p-8 bg-white rounded-lg'>
+//         <div className='mb-4 text-center'>
+//           <div className='mb-2 text-xl font-bold'>Sign In</div>
+//           <button className='text-blue-500' onClick={onClose}>
+//             Close
+//           </button>
+//         </div>
+//         <div className='mb-4 text-center'>
+//           <div className='mb-2 text-xl font-bold'>Sign Up</div>
+//           <button className='text-blue-500' onClick={onClose}>
+//             Close
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };

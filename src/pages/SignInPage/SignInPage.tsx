@@ -1,13 +1,11 @@
-// import SignInForm from './SignInForm';
+import { SignInForm } from '../../components/Hook-Form';
 
-
-function SignInPage() {
+export function SignInPage({ handleSignIn }: { handleSignIn: (data: any) => void }) {
   return (
     <div>
-      <h1>Sign In</h1>
-      {/* <SignInForm /> */}
+      <h1 className='text-4xl mt-7 mb-7'>Sign In</h1>
+
+      <SignInForm handleSignIn={handleSignIn} />
     </div>
   );
 }
-
-export default SignInPage;
