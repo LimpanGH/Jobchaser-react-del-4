@@ -1,25 +1,38 @@
-import { useState } from 'react';
+// React
+import React, { useState, useEffect } from 'react';
+
+// Components
 import { Jobs } from './components/Jobs';
-import { SearchField } from './pages/Home/SearchField';
 import { NavBar } from './components/NavBar';
 import { SignInPage } from './pages/SignInPage/SignInPage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
-
-import { BrowserRouter, Routes, Route, Navigate, Link, Outlet, useOutlet } from 'react-router-dom';
-
 import HomePage from './pages/Home/HomePage';
 import { FormProvider } from './components/Hook-Form';
 
+// Firebase
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import { auth } from './Firebase/firebase-config';
+import { signOut } from 'firebase/auth';
+
+// React router
+import { BrowserRouter, Routes, Route, Navigate, Link, Outlet, useOutlet } from 'react-router-dom';
+
 export function App() {
   const [isSignedIn, setIsSignedIn] = useState(false);
-
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsSignedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
   const handleSignIn = () => {
     setIsSignedIn(true);
   };
 
+
   return (
     <BrowserRouter basename='Jobchaser-react'>
-      <div className='flex flex-col items-center max-w-screen-xl mx-auto '>
+      <div className='flex flex-col items-center mx-auto max-w-sgcreen-xl '>
         <NavBar isSignedIn={isSignedIn} handleSignIn={handleSignIn} />
         <FormProvider>
           <Routes>
@@ -33,3 +46,13 @@ export function App() {
     </BrowserRouter>
   );
 }
+
+
+export const handleSignOut = async () => {
+  try {
+    await signOut(auth);
+    setIsSignedIn(false); // Update state to reflect sign-out
+  } catch (error) {
+    console.error('Error signing out:', error);
+  }
+};

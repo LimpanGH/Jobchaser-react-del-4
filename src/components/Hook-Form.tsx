@@ -1,22 +1,22 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../Firebase/firebase-config';
+import { useFormField } from './UseFormField';
 
-const FormContext = React.createContext<any>(null);
+export const FormContext = React.createContext<any>(null);
 
 interface IFormInput {
   firstName: string;
   lastName: string;
   age: number;
+  email: string;
+  password: string;
 }
 
 export function FormProvider({ children }: { children: React.ReactNode }) {
   const methods = useForm<IFormInput>();
   return <FormContext.Provider value={methods}>{children}</FormContext.Provider>;
-}
-
-export function useFormField(fieldName: string) {
-  const methods = useContext(FormContext);
-  return methods?.register(fieldName);
 }
 
 export function useFormSubmitHandler<T = any>(onSubmit: SubmitHandler<T>) {
@@ -27,14 +27,41 @@ export function useFormSubmitHandler<T = any>(onSubmit: SubmitHandler<T>) {
 // My Sign-in form ----------------------
 export function SignInForm({ handleSignIn }: { handleSignIn: (data: IFormInput) => void }) {
   const { register, handleSubmit } = useForm<IFormInput>();
-
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
+  const emailRegister = useFormField('email');
+  const passwordRegister = useFormField('password');
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
     console.log(data);
-    handleSignIn(data);
+    try {
+      await signInWithEmailAndPassword(auth, data.email, data.password);
+      handleSignIn(data);
+    } catch (error) {
+      console.error('Sign in error:', error);
+    }
   };
-
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-sm mx-auto'>
+      <div className='mb-4'>
+        <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='email'>
+          Email
+        </label>
+        <input
+          {...emailRegister}
+          id='email'
+          type='email'
+          className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+        />
+      </div>
+      <div className='mb-4'>
+        <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='password'>
+          Password
+        </label>
+        <input
+          {...passwordRegister}
+          id='password'
+          type='password'
+          className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+        />
+      </div>
       <div className='mb-4'>
         <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='firstName'>
           First Name
@@ -60,6 +87,17 @@ export function SignInForm({ handleSignIn }: { handleSignIn: (data: IFormInput) 
       <div className='mb-4'>
         <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='age'>
           Age
+        </label>
+        <input
+          {...register('age', { required: true, min: 18, max: 99 })}
+          id='age'
+          type='number'
+          className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+        />
+      </div>
+      <div className='mb-4'>
+        <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='age'>
+          Email
         </label>
         <input
           {...register('age', { required: true, min: 18, max: 99 })}
@@ -81,11 +119,42 @@ export function SignInForm({ handleSignIn }: { handleSignIn: (data: IFormInput) 
 // My Sign-up form ----------------------
 export function SignUpForm() {
   const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data);
-
+  const emailRegister = useFormField('email');
+  const passwordRegister = useFormField('password');
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    console.log(data);
+    try {
+      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      // Additional actions after successful sign up
+    } catch (error) {
+      console.error('Sign up error:', error);
+    }
+  };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-sm mx-auto'>
       <div className='mb-4'>
+        <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='email'>
+          Email
+        </label>
+        <input
+          {...emailRegister}
+          id='email'
+          type='email'
+          className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+        />
+      </div>
+      <div className='mb-4'>
+        <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='password'>
+          Password
+        </label>
+        <input
+          {...passwordRegister}
+          id='password'
+          type='password'
+          className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
+        />
+      </div>
+      {/* <div className='mb-4'>
         <label className='block mb-2 text-sm font-bold text-gray-700' htmlFor='firstName'>
           First Name
         </label>
@@ -117,7 +186,7 @@ export function SignUpForm() {
           type='number'
           className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
         />
-      </div>
+      </div> */}
       <button
         type='submit'
         className='px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline'

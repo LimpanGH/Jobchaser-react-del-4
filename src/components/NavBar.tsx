@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Modal } from './ModalAccount';
+import {handleSignOut} from '../App'
 
 interface NavBarProps {
   isSignedIn: boolean;
@@ -32,7 +33,7 @@ export function NavBar({ isSignedIn, handleSignIn }: NavBarProps) {
           <span>Signed In</span>
         ) : (
           <span onClick={handleOpenModal} style={{ cursor: 'pointer' }}>
-            Register
+            Sign In
           </span>
         )}
       </div>
@@ -43,7 +44,11 @@ export function NavBar({ isSignedIn, handleSignIn }: NavBarProps) {
           onClick={handleOpenModal}
         />
       </div>
+      
+      <button onClick={handleSignOut}>Sign Out</button>
+
       {isModalOpen && <Modal onClose={handleCloseModal} />}
+      
     </div>
   );
 }
