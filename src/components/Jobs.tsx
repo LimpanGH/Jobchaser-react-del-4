@@ -45,7 +45,7 @@ export function Jobs(): JSX.Element {
       try {
         setIsloading(true);
         const data: any = await getData(url);
-        await new Promise((r) => setTimeout(r, 2000)); // just to see the loading spinner
+        // await new Promise((r) => setTimeout(r, 5000)); // just to see the loading spinner
         setJobs(data.hits as Job[]);
         console.log(data.hits[0].id);
         setIsloading(false);
