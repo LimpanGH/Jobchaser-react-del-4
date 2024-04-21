@@ -11,6 +11,7 @@ export function SearchField({ onChange, value }: Props) {
   const handleSearch = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
+  
   {
     console.log('Generated ID:', ageInputId);
   }

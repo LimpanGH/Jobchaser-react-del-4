@@ -9,7 +9,7 @@ import { useFormField } from './UseFormField';
 
 export const FormContext = React.createContext<any>(null);
 
-interface IFormInput {
+ export interface IFormInput {
   email: string;
   password: string;
   // firstName: string;
