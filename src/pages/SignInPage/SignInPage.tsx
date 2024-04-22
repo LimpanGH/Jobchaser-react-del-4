@@ -1,5 +1,7 @@
 // SignInPage.tsx
-import { SignInForm, IFormInput } from '../../components/Hook-Form';
+import { SignInForm } from './SignInForm'
+import { IFormInput } from '../../components/Hook-Form'
+
 
 
 export function SignInPage({ handleSignIn }: { handleSignIn: (data: IFormInput) => void }) {

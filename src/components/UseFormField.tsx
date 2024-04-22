@@ -9,10 +9,10 @@
 // }
 
 
-import { useContext } from 'react';
-import { FormContext } from './Hook-Form'; // Adjust the path if necessary
+// import { useContext } from 'react';
+// import { FormContext } from './Hook-Form'; // Adjust the path if necessary
 
-export function useFormField(fieldName: string) {
-  const methods = useContext(FormContext);
-  // return methods?.register({ name: fieldName }); // Pass field name as a configuration object
-}
+// export function useFormField(fieldName: string) {
+//   const methods = useContext(FormContext);
+//   // return methods?.register({ name: fieldName }); // Pass field name as a configuration object
+// }

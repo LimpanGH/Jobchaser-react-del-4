@@ -1,4 +1,5 @@
-import { SignUpForm } from '../../components/Hook-Form';
+import { SignUpForm } from './SignUpForm'
+// import { IFormInput } from '../../components/Hook-Form'
 
 export function SignUpPage() {
   return (
