@@ -72,8 +72,10 @@ export function Jobs(): JSX.Element {
   return (
     <>
       <SearchField onChange={handleChange} value={searchFilter} />
-      <div>{filteredJobs.length}</div>
-      <RenderedJobs filteredJobs={filteredJobs} />
+      <div className='w-[70%] mx-auto'>
+        <div className='text-center'>{filteredJobs.length}</div>
+        <RenderedJobs filteredJobs={filteredJobs} />
+      </div>
     </>
   );
 }

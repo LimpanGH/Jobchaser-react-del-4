@@ -1,7 +1,7 @@
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../Firebase/firebase-config';
-import { FormContext, IFormInput } from '../../components/Hook-Form'; // Import FormContext and IFormInput
+import { IFormInput } from '../../components/Hook-Form'; // Import FormContext and IFormInput
 
 interface SignInProps {
   handleSignIn: (data: IFormInput) => void;
@@ -27,7 +27,6 @@ export function SignInForm({ handleSignIn }: SignInProps) {
         </label>
         <input
           {...register('email')}
-          name='email'
           id='email'
           type='email'
           className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
@@ -39,7 +38,6 @@ export function SignInForm({ handleSignIn }: SignInProps) {
         </label>
         <input
           {...register('password')}
-          name='password'
           id='password'
           type='password'
           className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'

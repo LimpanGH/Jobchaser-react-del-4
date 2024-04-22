@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { useId } from 'react';
+import React, { useId } from 'react';
 
 type Props = {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -11,7 +10,7 @@ export function SearchField({ onChange, value }: Props) {
   const handleSearch = (event: React.ChangeEvent<HTMLFormElement>) => {
     event.preventDefault();
   };
-  
+
   {
     console.log('Generated ID:', ageInputId);
   }

@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { ModalJob } from './ModalJob';
 
@@ -36,7 +35,7 @@ export const RenderedJobs: React.FC<RenderedJobsProps> = ({ filteredJobs }) => {
   };
 
   return (
-    <div className='cardWrapper'>
+    <>
       {filteredJobs.map((job: Job) => (
         <div key={job.id} className='job-card' onClick={() => handleOpenModal(job)}>
           <div className='logo'>
@@ -62,6 +61,6 @@ export const RenderedJobs: React.FC<RenderedJobsProps> = ({ filteredJobs }) => {
       {isModalOpen && selectedJob && (
         <ModalJob onClose={handleCloseModal} description={selectedJob?.description?.text || ''} />
       )}
-    </div>
+    </>
   );
 };

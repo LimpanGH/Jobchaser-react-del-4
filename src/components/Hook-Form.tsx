@@ -1,20 +1,12 @@
 // Hook-Form.tsx
 import React, { useContext } from 'react';
-import { useForm, SubmitHandler } from 'react-hook-form';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../Firebase/firebase-config';
-// import { useFormField } from './UseFormField';
-
-
+import { SubmitHandler, useForm } from 'react-hook-form';
 
 export const FormContext = React.createContext<any>(null);
 
- export interface IFormInput {
+export interface IFormInput {
   email: string;
   password: string;
-  // firstName: string;
-  // lastName: string;
-  // age: number;
 }
 
 export function FormProvider({ children }: { children: React.ReactNode }) {

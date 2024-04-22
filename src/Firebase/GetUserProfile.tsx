@@ -1,7 +1,6 @@
 // To get a user's profile information, use the properties of an instance of User. For example:
 
-
-import { getAuth } from "firebase/auth";
+import { getAuth } from 'firebase/auth';
 
 const auth = getAuth();
 const user = auth.currentUser;

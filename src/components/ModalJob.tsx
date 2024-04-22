@@ -8,7 +8,7 @@ interface ModalProps {
 export const ModalJob: React.FC<ModalProps> = ({ onClose, description }) => {
   return (
     <div className='fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50'>
-      <div className='p-8 bg-white rounded-lg'>
+      <div className='p-8 bg-white rounded-lg h-20 min-h-[200px] max-w-[1200px] overflow-hidden '>
         <div className='mb-4 text-center'>
           <div className='mb-2 text-xl font-bold'>Job Description</div>
           <p>{description}</p>

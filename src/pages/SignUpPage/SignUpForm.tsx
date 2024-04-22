@@ -14,6 +14,7 @@ export function SignUpForm() {
       console.error('Sign up error:', error);
     }
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='max-w-sm mx-auto'>
       <div className='mb-4'>
@@ -22,7 +23,6 @@ export function SignUpForm() {
         </label>
         <input
           {...register('email')}
-          name='email'
           id='email'
           type='email'
           className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
@@ -34,7 +34,6 @@ export function SignUpForm() {
         </label>
         <input
           {...register('password')}
-          name='password'
           id='password'
           type='password'
           className='w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline'
