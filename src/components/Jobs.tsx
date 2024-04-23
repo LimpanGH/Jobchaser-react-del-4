@@ -8,7 +8,10 @@
 // const cleanEndpoint: string = 'https://jobsearch.api.jobtechdev.se/search?';
 
 // Imports
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../ReduxToolkit/store';
+import { setSearchFilter, setLoading, setJobs } from '../ReduxToolkit/JobSlice';
 import { getData } from './GetData';
 import { SearchField } from '../pages/Home/SearchField';
 import { RenderedJobs } from './RenderedJobs';
@@ -21,7 +24,7 @@ const offset = 0; // Specify the starting point of the results (0-indexed)
 const url = `${activeEndpoint}&limit=${limit}&offset=${offset}`;
 
 // Interface ---------------------------
-interface Job {
+export interface Job {
   id: string;
   employer: {
     name: string;
@@ -35,35 +38,54 @@ interface Job {
 
 // Jobs -----------------------------------
 export function Jobs(): JSX.Element {
-  const [jobs, setJobs] = useState<Job[]>([]);
-  const [searchFilter, setSearchFilter] = useState('');
-  const [isLoading, setIsloading] = useState(true);
+  const dispatch = useDispatch();
+  const searchFilter = useSelector((state: RootState) => state.job.searchFilter);
+  const jobs = useSelector((state: RootState) => state.job.jobs);
+  const isLoading = useSelector((state: RootState) => state.job.isLoading);
 
   // Runs AFTER the first render
+  // useEffect(() => {
+  //   const fetchData = async (): Promise<void> => {
+  //     try {
+  //       setIsloading(true);
+  //       const data: any = await getData(url);
+  //       // await new Promise((r) => setTimeout(r, 5000)); // just to see the loading spinner
+  //       dispatch(setJobs(data.hits as Job[]));
+  //       console.log(data.hits[0].id);
+  //       setIsloading(false);
+  //     } catch (error) {
+  //       console.error('Error fetching data:', error);
+  //     }
+  //   };
+
   useEffect(() => {
     const fetchData = async (): Promise<void> => {
       try {
-        setIsloading(true);
+        dispatch(setLoading(true)); // Dispatch setLoading action
         const data: any = await getData(url);
-        // await new Promise((r) => setTimeout(r, 5000)); // just to see the loading spinner
-        setJobs(data.hits as Job[]);
+        dispatch(setJobs(data.hits as Job[]));
         console.log(data.hits[0].id);
-        setIsloading(false);
       } catch (error) {
         console.error('Error fetching data:', error);
+      } finally {
+        dispatch(setLoading(false)); // Dispatch setLoading action
       }
     };
 
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   if (isLoading) {
     return <Loader />;
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchFilter(e.target.value);
+    dispatch(setSearchFilter(e.target.value));
   };
+
+  if (isLoading) {
+    return <Loader />;
+  }
 
   const filteredJobs = jobs.filter((job) => {
     return JSON.stringify(job).toLowerCase().match(searchFilter.toLowerCase()); //|| job.workplace_address.city.includes(searchFilter)
