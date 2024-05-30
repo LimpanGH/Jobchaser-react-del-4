@@ -27,6 +27,6 @@
     "src/Firebase/SignUpPage",
     "src/Firebase/auth_funktioner_doc.tsx",
     "src/Firebase/SignUpForm.tsx"
-  ],
+, "Används ej/tillf"  ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
