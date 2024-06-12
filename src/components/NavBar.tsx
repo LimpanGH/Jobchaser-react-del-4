@@ -1,4 +1,3 @@
-// NavBar.tsx
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { Modal } from './ModalAccount';
@@ -6,32 +5,31 @@ import { Modal } from './ModalAccount';
 interface NavBarProps {
   isSignedIn: boolean;
   handleSignIn: (userData: any) => void;
-  HandleSignOut: () => void; // Add handleSignOut prop
+  HandleSignOut: () => void; 
+  handleOpenModal: () => void;
 }
 
-export function NavBar({ isSignedIn, HandleSignOut, handleSignIn }: NavBarProps) {
+export function NavBar({ isSignedIn, HandleSignOut, handleSignIn, handleOpenModal }: NavBarProps) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleOpenModal = () => {
-    setIsModalOpen(true);
-  };
+  // const handleOpenModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
   };
 
   return (
-    <div className='flex flex-col justify-between w-screen bg-blue-100'>
-      <div className='flex justify-end gap-6 px-8 py-4 dw-full'>
-        <div>
-          <Link to='/' className='text-3xl'>
-            Home
-          </Link>
-          <Link className='ml-4 text-3xl' to='/jobs'>
-            Jobs
-          </Link>
-        </div>
-
+    <div className='flex items-center justify-between w-screen px-8 py-4 bg-navbar'>
+      <div className='text-3xl'>Jobchaser</div>
+      <div className='flex gap-6'>
+        <Link to='/' className='text-2xl'>
+          Home
+        </Link>
+        <Link className='text-2xl' to='/jobs'>
+          Jobs
+        </Link>
         <div className='flex items-center text-xl text-blue-600'>
           <button onClick={handleOpenModal}>
             <svg

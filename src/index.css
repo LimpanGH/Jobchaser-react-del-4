@@ -6,6 +6,7 @@
   @apply bg-blue-500;
 }
 
+/*todo    Reset -------------------------------------------------------------- */
 *,
 *::before,
 *::after {
@@ -15,8 +16,10 @@
 * {
   padding: 0;
   margin: 0;
+  /* outline: 1px solid magenta; */
 }
 
+/*todo   General -------------------------------------------------------------- */
 body {
   width: 100vw;
   height: 100vh;
@@ -45,44 +48,31 @@ body {
   width: 70%;
 }
 
+/*todo   Search-card -------------------------------------------------------- */
 .search-card {
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
-  /* gap: 2px; */
   border: 1px solid;
-  border-radius: 0.2rem;
-  height: 5rem;
+  min-height: 5rem;
   width: 80%;
   margin-inline: auto;
   margin-bottom: 3rem;
+  gap: 1rem;
+  padding: 1rem;
 }
 
-.btn-magifyingglass {
-  height: 2rem;
-  width: 2rem;
-  /* display: flex; */
-  justify-content: center;
-  align-items: center;
-  /* background-color: red; */
-  margin-left: 3rem;
-  border: none;
-}
-
-.icon-magifyingglass {
-  align-items: center;
-}
-
+/*todo    Job-card -------------------------------------------------------- */
 .job-card {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   gap: 2px;
   border: 1px solid;
   border-radius: 0.2rem;
-  /* height: 5rem; */
   margin-inline: auto;
   margin-bottom: 0.7rem;
   padding: 0.6rem;
@@ -90,7 +80,10 @@ body {
 
 .logo {
   display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
   margin-left: 1rem;
+  width: 2.5rem;
 }
 
 .logo-image {
@@ -100,17 +93,81 @@ body {
 
 .company-info {
   margin-left: 1rem;
+  flex-grow: 1;
+  max-width: 70%;
 }
 
+/* .tag-btn-container -------------------- */
 .tag-btn-container {
   display: flex;
-  margin-left: auto;
+  align-content: center;
 }
 
 .tag-btn {
-  background-color: rgba(204, 229, 236, 1);
-  border-radius: 0.2rem;
-  padding: 0.2rem;
   text-align: center;
   margin-right: 1rem;
+}
+
+
+
+/* todo Modal-account ---------------------------------------------------------------- */
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Set z-index to ensure the modal is on top of other content */
+.modal-container {
+  z-index: 9999; /* Adjust z-index as needed */
+}
+
+/* todo Media query ---------------------------------------------------------------- */
+@media only screen and (max-width: 436px) {
+  .hide-company-info {
+    display: none;
+  }
+  .hide-company-info p {
+    font-size: smaller;
+  }
+
+  .tag-btn-container {
+    display: flex;
+    margin-left: auto;
+  }
+
+  .tag-btn {
+    background-color: rgba(204, 229, 236, 1);
+    border-radius: 0.2rem;
+    padding: 0.2rem;
+    text-align: center;
+    margin-right: 1rem;
+    margin: 0.2rem;
+  }
+
+  .job-card {
+    align-items: center;
+  }
+  .search-card {
+    justify-content: center;
+  }
+  .tag-btn-container {
+    display: flex;
+    margin-left: 0;
+  }
+
+  .job-card {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border: 1px solid;
+    border-radius: 0.2rem;
+    margin-inline: auto;
+    margin-bottom: 0.7rem;
+    padding: 0.6rem;
+  }
 }
