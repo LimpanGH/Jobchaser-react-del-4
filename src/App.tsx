@@ -50,14 +50,15 @@ export function App() {
 
   return (
     <BrowserRouter basename='Jobchaser/'>
-      <div className='flex flex-col min-h-screen '>
-        <div className='flex-grow '>
-          <NavBar
-            isSignedIn={isSignedIn}
-            handleSignIn={handleSignIn}
-            HandleSignOut={handleSignOut}
-            handleOpenModal={handleOpenModal}
-          />
+      <div className='flex flex-col min-h-screen'>
+        <NavBar
+          isSignedIn={isSignedIn}
+          handleSignIn={handleSignIn}
+          HandleSignOut={handleSignOut}
+          handleOpenModal={handleOpenModal}
+        />
+        <div className='relative flex-grow'>
+          {isModalOpen && <Modal onClose={handleCloseModal} />}
           <FormProvider>
             <Routes>
               <Route path='/' element={<HomePage />} />
@@ -70,7 +71,6 @@ export function App() {
         </div>
         <Footer />
       </div>
-      {isModalOpen && <Modal onClose={handleCloseModal} />}
     </BrowserRouter>
   );
 }

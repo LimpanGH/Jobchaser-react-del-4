@@ -20,7 +20,7 @@ export const Modal: React.FC<ModalProps> = ({ onClose }) => {
 
   return (
     <div className='fixed top-0 left-0 flex items-center justify-center w-full h-full bg-gray-800 bg-opacity-50'>
-      <div className='p-8 bg-white rounded-lg modal-container'>
+      <div className='p-4 bg-white rounded-lg modal-container'>
         <div className='flex justify-end'>
           <button className='text-gray-500' onClick={onClose}>
             X
