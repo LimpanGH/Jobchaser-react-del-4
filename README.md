@@ -1,13 +1,19 @@
-
-
 # Jobchaser-react
 
 Avancerad frontendutveckling och Typescript
 
 - https://chasacademy.instructure.com/courses/289/assignments/1594
 - https://app.excalidraw.com/l/9THk15pMa6N/7gU3d5sgfNX
+- Köra applikationen:
 
+```
+npm run dev
+```
+
+- Klicka på userikonen i nav bar och skapa en användare, minst 6 tecken i lösenordet.
+<br><br><br>
 # Individuellt Reactprojekt: Jobchaser
+<br>
 
 ## Del 1
 
@@ -131,8 +137,32 @@ När användare är inloggad ska han/hon kunna spara och se sparade jobb. Denna 
 - Lägg svaret på frågorna i repots Readme
 
 ## Del 4
+Nuvarande userstories: 
 
-# Resources
+"Som användare vill jag kunna se en lista av jobb"
+"Som användare ska jag kunna söka bland jobb och se en filtrerad lista"
+"Som användare ska man kunna registrera sig på sidan"
+"Som registrerad användare ska man kunna logga in på sidan"
+"Som användare ska jag kunna filtrera på olika kategorier, 
+Frivilligt: "Som användare ska jag kunna byta mellan dark- och lightmode på sidan"
+
+LÄNK TILL JOBCHASER VECKA FÖR VECKA https://link.excalidraw.com/l/9THk15pMa6N/7gU3d5sgfNX. (obs! detaljar i senare veckor kan komma att ändras något)
+
+
+- Denna vecka ska du använda Redux Toolkit för att hantera state uppdatering av filtrering av kategorier och fritextsökning av listan (se ett exempelförslag i bilden). Tidigare globala state som inloggning och ev. dark-mode ska ligga kvar med Context API:et. 
+-Du ska också jobba med Typescript så att alla filer i ditt projekt är .tsx eller .ts och inte ger några fel. Antingen uppgraderar du ditt befintliga Vite React JS-projekt till Typescript enligt följande instruktioner https://github.com/chasacademy-sandra-larsson/vite-react-to-typescript. eller skapar ett Vite React TS-projekt och flyttar över komponenterna.
+
+Veckans teoretiska frågor 
+- Vad är Redux Toolkit? 
+- När, i vilka situationer vill man använda Redux Toolkit?
+- Beskriv typiska områden hur man använder Typescript i React? (ex props, event, useReducer, etc)
+
+Veckans inlämning
+- Länken till ditt Githubrepo
+- Länken till den publicerade version på Github Pages / Netlify / annat
+Lägg svaret på frågorna i repots Readme
+
+# **Resources**
 
 - https://arbetsformedlingen.se/om-webbplatsen/apier-och-oppna-data
 - https://arbetsformedlingen.my.site.com/apiportal/s/partner?language=sv&t=1710066176867
@@ -143,20 +173,4 @@ När användare är inloggad ska han/hon kunna spara och se sparade jobb. Denna 
 - https://www.jobtechdev.se/sv
 - https://www.jobtechdev.se/sv/components/jobsearch
 - Dokumentaion: https://gitlab.com/arbetsformedlingen/job-ads/jobsearch-apis/-/blob/main/docs/- GettingStartedJobSearchSE.md
-
-```
-async function fetchPosts() {
-try {
-const response = await fetch('https://jobsearch.api.jobtechdev.se/search?q=muse');
-const data = await response.json();
-console.log(data)
-
-} catch (error) {
-console.error('Error fetching posts:', error);
-}
-}
-
-fetchPosts();
-```
-
-Authentication hanteras med Firebase https://console.firebase.google.com/u/0/ 
+- Authentication hanteras med Firebase https://console.firebase.google.com/u/0/
