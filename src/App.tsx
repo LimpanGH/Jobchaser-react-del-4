@@ -49,7 +49,8 @@ export function App() {
   };
 
   return (
-    <BrowserRouter basename='Jobchaser/'>
+    // <BrowserRouter basename='Jobchaser/'>
+    <BrowserRouter basename='/'>
       <div className='flex flex-col min-h-screen'>
         <NavBar
           isSignedIn={isSignedIn}
