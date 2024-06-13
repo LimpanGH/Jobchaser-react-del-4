@@ -117,7 +117,7 @@ export function SearchField({ onChange, value, onToggleSortOrder, sortOrder }: P
                   onKeyDown={(event) => {
                     if (event.key === 'Enter') {
                       event.preventDefault();
-                      handleSaveTag(tag.id, event.target.value);
+                      handleSaveTag(tag.id, (event.target as HTMLInputElement).value);
                     }
                   }}
                 />
