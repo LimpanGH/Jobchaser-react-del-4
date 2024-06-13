@@ -1,25 +1,12 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
-import { Modal } from './ModalAccount';
-
 interface NavBarProps {
   isSignedIn: boolean;
   handleSignIn: (userData: any) => void;
-  HandleSignOut: () => void; 
+  HandleSignOut: () => void;
   handleOpenModal: () => void;
 }
 
-export function NavBar({ isSignedIn, HandleSignOut, handleSignIn, handleOpenModal }: NavBarProps) {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  // const handleOpenModal = () => {
-  //   setIsModalOpen(true);
-  // };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
-
+export function NavBar({ isSignedIn, HandleSignOut, handleOpenModal }: NavBarProps) {
   return (
     <div className='flex items-center justify-between w-screen px-8 py-4 bg-navbar'>
       <div className='text-3xl'>Jobchaser</div>
@@ -51,7 +38,6 @@ export function NavBar({ isSignedIn, HandleSignOut, handleSignIn, handleOpenModa
           )}
         </div>
       </div>
-      {isModalOpen && <Modal onClose={handleCloseModal} />}
     </div>
   );
 }
